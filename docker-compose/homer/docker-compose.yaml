@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  homer:
+    image: b4bz/homer
+    restart: always
+    volumes:
+        - ./config:/www/assets
+    ports:
+      - "9999:8080"
