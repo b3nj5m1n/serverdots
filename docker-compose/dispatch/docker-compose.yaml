@@ -1,0 +1,10 @@
+version: "3"
+services:
+  dispatch:
+    image: khlieng/dispatch
+    ports:
+     - "7219:80"
+     - "2194:443"
+    volumes:
+        - ./data:/data
+    restart: always

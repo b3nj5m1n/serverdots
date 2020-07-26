@@ -1,0 +1,14 @@
+version: '3'
+services:
+    jellyfin:
+        image: jellyfin/jellyfin
+        ports:
+            - "2893:8096"
+            - "5032:8920"
+            - "1983:1900"
+            - "4832:7359"
+        volumes:
+            - ./config:/config
+            - ./cache:/cache
+            - ./media:/media
+        restart: always

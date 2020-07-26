@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  cyberchef:
+    image: mpepping/cyberchef
+    restart: always
+    ports:
+      - "3272:8000"
