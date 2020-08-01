@@ -1,8 +1,18 @@
-version: '2'
+version: '3.2'
 
 volumes:
     nextcloud:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/nextcloud'
     db:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/db'
 
 services:
     db:
@@ -12,8 +22,8 @@ services:
         volumes:
             - db:/var/lib/mysql
         environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_PASSWORD=root
+            - MYSQL_ROOT_PASSWORD=admin
+            - MYSQL_PASSWORD=admin
             - MYSQL_DATABASE=nextcloud
             - MYSQL_USER=nextcloud
     app:
@@ -24,4 +34,10 @@ services:
             - db
         volumes:
             - nextcloud:/var/www/html
+        environment:
+            - MYSQL_HOST=db
+            - MYSQL_ROOT_PASSWORD=admin
+            - MYSQL_PASSWORD=admin
+            - MYSQL_DATABASE=nextcloud
+            - MYSQL_USER=nextcloud
         restart: always
