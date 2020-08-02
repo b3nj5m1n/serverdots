@@ -3,12 +3,12 @@ services:
     jellyfin:
         image: jellyfin/jellyfin
         ports:
-            - "2893:8096"
-            - "5032:8920"
-            - "1983:1900"
-            - "4832:7359"
+            - "30006:8096"
+            - "8801:8920"
+            - "8802:1900"
+            - "8803:7359"
         volumes:
             - ./config:/config
             - ./cache:/cache
-            - ./media:/media
+            - /mnt/vault2/media-lib/:/media
         restart: always

@@ -3,8 +3,7 @@ services:
   dispatch:
     image: khlieng/dispatch
     ports:
-     - "7219:80"
-     - "2194:443"
+     - "30014:80"
     volumes:
         - ./data:/data
     restart: always

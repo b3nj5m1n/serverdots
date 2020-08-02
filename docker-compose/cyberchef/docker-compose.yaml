@@ -5,4 +5,4 @@ services:
     image: mpepping/cyberchef
     restart: always
     ports:
-      - "3272:8000"
+      - "30012:8000"

@@ -6,7 +6,7 @@ services:
       STORAGE_TYPE: redis
       STORAGE_HOST: hastebinredis
     ports:
-     - "5000:7777"
+     - "30010:7777"
     restart: always
   hastebinredis:
     image: redis

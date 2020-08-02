@@ -29,7 +29,7 @@ services:
     app:
         image: nextcloud
         ports:
-            - 8663:80
+            - "30007:80"
         links:
             - db
         volumes:

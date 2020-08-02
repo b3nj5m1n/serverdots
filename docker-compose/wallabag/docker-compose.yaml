@@ -15,9 +15,9 @@ services:
             - SYMFONY__ENV__MAILER_USER=~
             - SYMFONY__ENV__MAILER_PASSWORD=~
             - SYMFONY__ENV__FROM_EMAIL=wallabag@example.com
-            - SYMFONY__ENV__DOMAIN_NAME=http://192.168.192.47:7000/
+            - SYMFONY__ENV__DOMAIN_NAME=https://wallabag.home.com
         ports:
-            - "7000:80"
+            - "30011:80"
         volumes:
             - ./images:/var/www/wallabag/web/assets/images
         restart: always

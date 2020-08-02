@@ -1,0 +1,50 @@
+[
+    {
+        "port": 30005,
+        "service": "Homepage"
+    },
+    {
+        "port": 30006,
+        "service": "Jellyfin"
+    },
+    {
+        "port": 30007,
+        "service": "Nextcloud"
+    },
+    {
+        "port": 6557,
+        "service": "Nextcloud ssl bridge"
+    },
+    {
+        "port": 30008,
+        "service": "Gitea"
+    },
+    {
+        "port": 6345,
+        "service": "Gitea ssh server"
+    },
+    {
+        "port": 30009,
+        "service": "Miniflux"
+    },
+    {
+        "port": 30010,
+        "service": "Hastebin"
+    },
+    {
+        "port": 30011,
+        "service": "Wallabag"
+    },
+    {
+        "port": 30012,
+        "service": "Cyberchef"
+    },
+    {
+        "port": 30013,
+        "service": "Ackee"
+    },
+    {
+        "port": 30014,
+        "service": "Dispatch"
+    }
+]
