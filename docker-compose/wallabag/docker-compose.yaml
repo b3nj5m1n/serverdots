@@ -1,30 +1,33 @@
 version: '3'
 services:
-    wallabag:
-        image: wallabag/wallabag
+    app:
+        image: leolivier/wallabag:armv7-rpi
         environment:
             - MYSQL_ROOT_PASSWORD=wallaroot
             - SYMFONY__ENV__DATABASE_DRIVER=pdo_mysql
             - SYMFONY__ENV__DATABASE_HOST=db
             - SYMFONY__ENV__DATABASE_PORT=3306
-            - SYMFONY__ENV__DATABASE_NAME=wallabag
-            - SYMFONY__ENV__DATABASE_USER=wallabag
-            - SYMFONY__ENV__DATABASE_PASSWORD=wallapass
+            - SYMFONY__ENV__DATABASE_NAME=wallabag_db
+            - SYMFONY__ENV__DATABASE_USER=wallabag_user
+            - SYMFONY__ENV__DATABASE_PASSWORD=wallabag_user
             - SYMFONY__ENV__DATABASE_CHARSET=utf8mb4
             - SYMFONY__ENV__MAILER_HOST=127.0.0.1
             - SYMFONY__ENV__MAILER_USER=~
             - SYMFONY__ENV__MAILER_PASSWORD=~
             - SYMFONY__ENV__FROM_EMAIL=wallabag@example.com
-            - SYMFONY__ENV__DOMAIN_NAME=https://wallabag.home.com
+            - SYMFONY__ENV__DOMAIN_NAME=http://127.0.0.1:80
         ports:
             - "30011:80"
-        volumes:
-            - ./images:/var/www/wallabag/web/assets/images
+        # volumes:
+        #     - ./wallabag:/var/www/wallabag
         restart: always
     db:
-        image: mariadb
+        image: yobasystems/alpine-mariadb
         environment:
             - MYSQL_ROOT_PASSWORD=wallaroot
+            - MYSQL_DATABASE=wallabag_db
+            - MYSQL_USER=wallabag_user
+            - MYSQL_PASSWORD=wallabag_user
         volumes:
             - ./data:/var/lib/mysql
         restart: always

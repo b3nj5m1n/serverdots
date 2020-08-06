@@ -1,9 +1,0 @@
-version: "3"
-services:
-  dispatch:
-    image: khlieng/dispatch
-    ports:
-     - "30014:80"
-    volumes:
-        - ./data:/data
-    restart: always

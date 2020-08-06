@@ -6,17 +6,17 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '$PWD/nextcloud'
+            device: '/mnt/stick1/nextcloud/nextcloud'
     db:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '$PWD/db'
+            device: '/mnt/stick1/nextcloud/db'
 
 services:
     db:
-        image: mariadb
+        image: yobasystems/alpine-mariadb:latest
         command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
         restart: always
         volumes:

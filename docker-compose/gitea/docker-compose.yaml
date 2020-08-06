@@ -6,7 +6,7 @@ networks:
 
 services:
   server:
-    image: gitea/gitea:latest
+    image: kunde21/gitea-arm
     environment:
       - USER_UID=1000
       - USER_GID=1000
@@ -22,4 +22,9 @@ services:
       - "6345:22"
 
 volumes:
-    gitea_data: {}
+    gitea_data:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/data'

@@ -23,3 +23,9 @@ services:
     restart: always
 volumes:
   miniflux-db:
+      driver: local
+      driver_opts:
+          type: 'none'
+          o: 'bind'
+          device: '/mnt/stick1/miniflux'
+

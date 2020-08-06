@@ -1,0 +1,40 @@
+version: '3.2'
+
+volumes:
+    matomo:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/matomo'
+    db:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/db'
+
+services:
+    db:
+        image: yobasystems/alpine-mariadb
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: matomo_db
+            MYSQL_USER: matomo_user
+            MYSQL_PASSWORD: matomo_user
+        volumes:
+            - db:/var/lib/mysql
+    app:
+        image: matomo
+        restart: always
+        links:
+            - db
+        ports:
+            - "30013:80"
+        volumes:
+            - matomo:/var/www/html
+        environment:
+            - MATOMO_DATABASE_HOST=db
+        env_file:
+            - ./db.env

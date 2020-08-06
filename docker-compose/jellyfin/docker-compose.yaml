@@ -10,5 +10,5 @@ services:
         volumes:
             - ./config:/config
             - ./cache:/cache
-            - /mnt/vault2/media-lib/:/media
+            - ./media:/media
         restart: always
