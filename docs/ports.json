@@ -46,5 +46,9 @@
     {
         "port": 30014,
         "service": "Dispatch"
+    },
+    {
+        "port": 30015,
+        "service": "Bitwarden"
     }
 ]

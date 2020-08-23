@@ -1,0 +1,21 @@
+version: '3.2'
+
+volumes:
+    db:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '/mnt/stick2/bitwardenrs/db'
+
+services:
+    bitwarden:
+        image: bitwardenrs/server
+        restart: always
+        volumes:
+            - db:/data
+        ports:
+            - 30015:80
+        environment:
+            LOG_FILE: '/data/bitwarden.log'
+            SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
