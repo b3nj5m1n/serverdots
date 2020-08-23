@@ -4,20 +4,32 @@
         "service": "Homepage"
     },
     {
+        "port": 29170,
+        "service": "Homepage ssl bridge"
+    },
+    {
         "port": 30006,
         "service": "Jellyfin"
+    },
+    {
+        "port": 29171,
+        "service": "Jellyfin ssl bridge"
     },
     {
         "port": 30007,
         "service": "Nextcloud"
     },
     {
-        "port": 6557,
+        "port": 29172,
         "service": "Nextcloud ssl bridge"
     },
     {
         "port": 30008,
         "service": "Gitea"
+    },
+    {
+        "port": 29173,
+        "service": "Gitea ssl bridge"
     },
     {
         "port": 6345,
@@ -28,27 +40,55 @@
         "service": "Miniflux"
     },
     {
+        "port": 29174,
+        "service": "Miniflux ssl bridge"
+    },
+    {
         "port": 30010,
         "service": "Hastebin"
+    },
+    {
+        "port": 29175,
+        "service": "Hastebin ssl bridge"
     },
     {
         "port": 30011,
         "service": "Wallabag"
     },
     {
+        "port": 29176,
+        "service": "Wallabag ssl bridge"
+    },
+    {
         "port": 30012,
         "service": "Cyberchef"
+    },
+    {
+        "port": 29177,
+        "service": "Cyberchef ssl bridge"
     },
     {
         "port": 30013,
         "service": "Ackee"
     },
     {
+        "port": 29178,
+        "service": "Ackee ssl bridge"
+    },
+    {
         "port": 30014,
         "service": "Dispatch"
     },
     {
+        "port": 29179,
+        "service": "Dispatch ssl bridge"
+    },
+    {
         "port": 30015,
         "service": "Bitwarden"
+    },
+    {
+        "port": 29180,
+        "service": "Bitwarden ssl bridge"
     }
 ]
