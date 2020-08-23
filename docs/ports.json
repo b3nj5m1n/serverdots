@@ -45,19 +45,19 @@
     },
     {
         "port": 30010,
-        "service": "Hastebin"
+        "service": "Unassigned"
     },
     {
         "port": 29175,
-        "service": "Hastebin ssl bridge"
+        "service": "Unassigned ssl bridge"
     },
     {
         "port": 30011,
-        "service": "Wallabag"
+        "service": "Unassigned"
     },
     {
         "port": 29176,
-        "service": "Wallabag ssl bridge"
+        "service": "Unassigned ssl bridge"
     },
     {
         "port": 30012,
@@ -69,11 +69,11 @@
     },
     {
         "port": 30013,
-        "service": "Ackee"
+        "service": "Matomo"
     },
     {
         "port": 29178,
-        "service": "Ackee ssl bridge"
+        "service": "Matomo ssl bridge"
     },
     {
         "port": 30014,
