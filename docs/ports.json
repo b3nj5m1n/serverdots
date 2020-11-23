@@ -90,5 +90,13 @@
     {
         "port": 29180,
         "service": "Bitwarden ssl bridge"
+    },
+    {
+        "port": 30016,
+        "service": "Lex"
+    },
+    {
+        "port": 29181,
+        "service": "Lex ssl bridge"
     }
 ]
