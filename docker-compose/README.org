@@ -1,0 +1,27 @@
+#+TITLE: Docker Compose
+
+#+begin_src shell :exports results
+tree
+#+end_src
+
+#+RESULTS:
+| .   |              |                     |       |
+| ├── | bitwardenrs  |                     |       |
+| │   | └──          | docker-compose.yml  |       |
+| ├── | cyberchef    |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | gitea        |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | hastebin     |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | jellyfin     |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | matomo       |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | miniflux     |                     |       |
+| │   | └──          | docker-compose.yaml |       |
+| ├── | nextcloud    |                     |       |
+| │   | └──          | docker-compose.yml  |       |
+| └── | README.org   |                     |       |
+|     |              |                     |       |
+| 8   | directories, | 9                   | files |
