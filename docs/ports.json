@@ -45,11 +45,11 @@
     },
     {
         "port": 30010,
-        "service": "Unassigned"
+        "service": "Hastebin"
     },
     {
         "port": 29175,
-        "service": "Unassigned ssl bridge"
+        "service": "Hastebin ssl bridge"
     },
     {
         "port": 30011,

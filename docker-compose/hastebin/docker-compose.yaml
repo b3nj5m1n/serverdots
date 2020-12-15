@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  haste-server:
+    build: .
+    environment:
+      - STORAGE_TYPE=file
+    ports:
+      - 30010:7777
+    volumes:
+      - hastebin_data:/usr/src/app/data
+    restart: always
+
+volumes:
+    hastebin_data:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '$PWD/data'
