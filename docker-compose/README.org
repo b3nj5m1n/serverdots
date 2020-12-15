@@ -1,27 +1,57 @@
 #+TITLE: Docker Compose
 
-#+begin_src shell :exports results
-tree
+This directory contains one directory for each service I serve using docker, each of these directories contains only the =docker-compose.yaml= and optionally some service-specific instructions.
+
+You can see the directory structure below:
+#+begin_src shell :exports results :results verbatim
+tree .
 #+end_src
 
 #+RESULTS:
-| .   |              |                     |       |
-| ├── | bitwardenrs  |                     |       |
-| │   | └──          | docker-compose.yml  |       |
-| ├── | cyberchef    |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | gitea        |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | hastebin     |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | jellyfin     |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | matomo       |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | miniflux     |                     |       |
-| │   | └──          | docker-compose.yaml |       |
-| ├── | nextcloud    |                     |       |
-| │   | └──          | docker-compose.yml  |       |
-| └── | README.org   |                     |       |
-|     |              |                     |       |
-| 8   | directories, | 9                   | files |
+#+begin_example
+.
+├── bitwardenrs
+│   └── docker-compose.yaml
+├── cyberchef
+│   └── docker-compose.yaml
+├── gitea
+│   └── docker-compose.yaml
+├── hastebin
+│   └── docker-compose.yaml
+├── jellyfin
+│   └── docker-compose.yaml
+├── matomo
+│   └── docker-compose.yaml
+├── miniflux
+│   └── docker-compose.yaml
+├── nextcloud
+│   └── docker-compose.yaml
+└── README.org
+
+8 directories, 9 files
+#+end_example
+
+* Persistent-Data Storage
+I want to have direct and easy access to all of the important data, this makes backups for example very easy. All of the important data is stored using [[https://docs.docker.com/compose/compose-file/#volumes][named volumes]]. Usually, it is expected that there be a =data= directory in the same directory as the =docker-compose.yaml=. In my case, these are symlinks to other locations on my file-system (I have 2 USB-thumb-drives connected at all times, this is where I store all of the data so that I have easy access to it at all times.).
+* Deploying a Service
+** Working directory
+First, either copy the =docker-compose.yaml= file to a new, empty directory and navigate into that, or navigate into the directory directly in your clone of this repo.
+** Configuration
+Now, make sure there is nothing specific to do for this service (There is no =README= file in this directory), and make sure you're happy with the configuration (The =docker-compose.yaml= file).
+** Set-up
+You're going to have to make sure directories for persistent storage exist, so you may have to create a new directory or create a symlink. See [[*Persistent-Data Storage][Persistent-Data Storage]] for more info.
+** Initial Start
+When you start the container for the first time, you want to see all the output and be able to stop it conveniently (Control + C).
+Use the following command in your current working directory:
+#+begin_src shell :eval never :exports code
+docker-compose up
+#+end_src
+If everything went well, you should see no significant errors, and the service should be up and running. You should be able to access it now, if you're working on your local machine using =localhost= / =127.0.0.1=, if not using the ip-address of your production machine. Make sure that you've configured your reverse proxy correctly, provided that you are using one.
+Hit =Control + C= once to gracefully stop the container. Wait until it has shut down.
+** 'Deploy'
+Now, let's make it so that the docker container runs in the background (And starts itself after every reboot, provided that you are auto-starting the docker daemon at start-up).
+Use the following command:
+#+begin_src shell :eval never :exports code
+docker-compose up -d
+#+end_src
+Wait a few seconds, the process should exit without any errors and the service should now be running in the background.
