@@ -1,0 +1,59 @@
+#+TITLE: Hastebin
+#+CALL: make_working_dir()
+#+CALL: init()
+
+#+NAME: init
+#+BEGIN_SRC shell :exports none :results none :mkdirp yes :dir /tmp/org.hastebin/
+find ./ -mindepth 1 -maxdepth 1 -exec rm -rf {} \;
+#+END_SRC
+
+* Installation
+Unfortunately, the proper hastebin-server docker-image doesn't seem to be available on docker hub. There are some, but the ones I tried either didn't work, or didn't support the arm-64 architecture of the raspberry pi.
+
+** Working Directory
+Make sure your current working directory is empty. Either create a new directory somewhere, or temporarily move the =docker-compose.yaml= and =README.org= files to somewhere else. Now, you'll have to clone the official haste-server git repository.
+
+Presuming you're in an empty directory now:
+#+begin_src shell :exports both :results verbatim
+tree -a
+#+end_src
+
+#+RESULTS:
+: .
+:
+: 0 directories, 0 files
+
+You can clone the github repository like this:
+#+begin_src shell :exports code :results none
+git clone https://github.com/seejohnrun/haste-server.git .
+#+end_src
+
+Which will clone the project into your working directory, which should now look like this:
+#+begin_src shell :exports both :results verbatim
+ls
+#+end_src
+
+#+RESULTS:
+#+begin_example
+about.md
+config.js
+docker-compose.yaml
+docker-entrypoint.js
+docker-entrypoint.sh
+Dockerfile
+lib
+package.json
+package-lock.json
+Procfile
+README.md
+server.js
+static
+test
+#+end_example
+
+This contains 2 important files, =docker-compose.yaml= and =Dockerfile=. Since we have our own =docker-compose.yaml=, let's replace the example onei (This is presuming that you moved the file into the parent directory beforehand):
+#+begin_src shell :exports code :eval never
+mv ../docker-compose.yaml .
+#+end_src
+
+You should now be able to use =docker-compose up= to initially build the image, after that hastebin should be up and running, so you can make it persistent with =docker-compose up -d= as described in the [[file:~/Documents/Github/serverdots/docker-compose/README.org][docker-compose README]].

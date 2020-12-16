@@ -32,7 +32,7 @@ tree .
 #+end_example
 
 * Persistent-Data Storage
-I want to have direct and easy access to all of the important data, this makes backups for example very easy. All of the important data is stored using [[https://docs.docker.com/compose/compose-file/#volumes][named volumes]]. Usually, it is expected that there be a =data= directory in the same directory as the =docker-compose.yaml=. In my case, these are symlinks to other locations on my file-system (I have 2 USB-thumb-drives connected at all times, this is where I store all of the data so that I have easy access to it at all times.).
+I want to have direct and easy access to all of the important data, this makes backups for example very easy. All of the important data is stored using [[https://docs.docker.com/compose/compose-file/#volumes][named volumes]]. Usually, it is expected that there be a =data= directory in the same directory as the =docker-compose.yaml=. In my case, these are symlinks to other locations on my file-system (I have 2 USB-thumb-drives connected at all times, this is where I store all of the data so that I always have easy access to it.).
 * Deploying a Service
 ** Working directory
 First, either copy the =docker-compose.yaml= file to a new, empty directory and navigate into that, or navigate into the directory directly in your clone of this repo.
