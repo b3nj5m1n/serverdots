@@ -3,7 +3,7 @@
 This directory contains one directory for each service I serve using docker, each of these directories contains only the =docker-compose.yaml= and optionally some service-specific instructions.
 
 You can see the directory structure below:
-#+begin_src shell :exports results :results verbatim
+#+begin_src shell :exports results :results verbatim :wrap example
 tree .
 #+end_src
 
@@ -17,7 +17,8 @@ tree .
 ├── gitea
 │   └── docker-compose.yaml
 ├── hastebin
-│   └── docker-compose.yaml
+│   ├── docker-compose.yaml
+│   └── README.org
 ├── jellyfin
 │   └── docker-compose.yaml
 ├── matomo
@@ -28,7 +29,7 @@ tree .
 │   └── docker-compose.yaml
 └── README.org
 
-8 directories, 9 files
+8 directories, 10 files
 #+end_example
 
 * Persistent-Data Storage
