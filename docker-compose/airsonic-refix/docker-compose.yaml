@@ -1,0 +1,9 @@
+version: '3'
+services:
+  airsonic:
+    container_name: airsonic-refix
+    image: tamland/airsonic-refix:latest
+    ports:
+        - "8080:80"
+    environment:
+        - SERVER_URL=http://127.0.0.1:4040

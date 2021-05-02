@@ -1,0 +1,12 @@
+version: '3'
+services:
+  airsonic:
+    container_name: airsonic
+    image: airsonic/airsonic
+    ports:
+        - "4040:4040"
+    volumes:
+        - ./data:/airsonic/data
+        - /mnt/Vault/music:/airsonic/music
+        - ./playlists:/airsonic/playlists
+        - ./podcasts:/airsonic/podcasts
