@@ -98,5 +98,13 @@
     {
         "port": 29181,
         "service": "Lex ssl bridge"
+    },
+    {
+        "port": 30017,
+        "service": "Booksonic air"
+    },
+    {
+        "port": 29182,
+        "service": "Booksonic air ssl bridge"
     }
 ]
