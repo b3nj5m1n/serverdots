@@ -1,0 +1,24 @@
+version: '3.2'
+
+volumes:
+  jenkins:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/stick2/jenkins
+
+services:
+  jenkins:
+    image: 'jenkins/jenkins:lts'
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - '30018:8080'
+    container_name: jenkins
+    volumes:
+      - 'jenkins:/var/jenkins_home'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/usr/local/bin/docker:/usr/local/bin/docker'
+
