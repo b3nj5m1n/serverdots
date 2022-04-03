@@ -106,5 +106,13 @@
     {
         "port": 29182,
         "service": "Booksonic air ssl bridge"
+    },
+    {
+        "port": 30018,
+        "service": "Jenkins"
+    },
+    {
+        "port": 29183,
+        "service": "Jenkins ssl bridge"
     }
 ]
