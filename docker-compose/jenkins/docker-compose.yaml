@@ -10,12 +10,13 @@ volumes:
 
 services:
   jenkins:
-    image: 'jenkins/jenkins:lts'
+    image: 'mlucken/jenkins-arm'
     restart: always
     privileged: true
     user: root
     ports:
       - '30018:8080'
+      - '50000:50000'
     container_name: jenkins
     volumes:
       - 'jenkins:/var/jenkins_home'
