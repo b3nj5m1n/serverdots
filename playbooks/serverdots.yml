@@ -1,0 +1,24 @@
+---
+- name: serverdots
+  hosts: vm
+
+  tasks:
+  - name: Ensure git installed
+    become: true
+    become_user: root
+    apt:
+      name: git
+      state: latest
+  - name: Create serverdots dir if it doesn't exist
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: /serverdots
+      state: directory
+      owner: debian
+      mode: '0705'
+  - name: Ensure serverdots repo is cloned
+    ansible.builtin.git:
+      repo: 'https://www.github.com/b3nj5m1n/serverdots.git'
+      dest: /serverdots
+      version: 514d21cd42723230a3893b1069b15e2d3d7971cf

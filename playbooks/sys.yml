@@ -1,0 +1,16 @@
+---
+- name: Ensure installed packages
+  hosts: vm
+  become: true
+  become_method: su
+  become_user: root
+
+  tasks:
+  - name: Install sudo
+    apt:
+      name: sudo
+      state: latest
+  - name: Ensure sudo group for debian
+    ansible.builtin.user:
+      name: debian
+      group: sudo

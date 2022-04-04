@@ -1,0 +1,29 @@
+---
+- name: dotfiles
+  hosts: vm
+
+  tasks:
+  - name: Ensure git installed
+    become: true
+    become_user: root
+    apt:
+      name: git
+      state: latest
+  - name: Create dotfiles dir if it doesn't exist
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: /dotfiles
+      state: directory
+      owner: debian
+      mode: '0705'
+  - name: Create XDG config dir if it doesn't exist
+    ansible.builtin.file:
+      path: ~/.config
+      state: directory
+      owner: debian
+  - name: Ensure dotfiles repo is cloned
+    ansible.builtin.git:
+      repo: 'https://www.github.com/b3nj5m1n/dotfiles.git'
+      dest: /dotfiles
+      version: 659ba4e99764dd5a3be4b10c993e32bc6cfbee0b

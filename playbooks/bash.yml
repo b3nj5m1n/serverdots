@@ -1,0 +1,25 @@
+---
+- name: Ensure dotfiles
+  ansible.builtin.import_playbook: dotfiles.yml
+
+- name: Ensure shrc
+  ansible.builtin.import_playbook: shrc.yml
+
+- name: Ensure shell utils
+  ansible.builtin.import_playbook: shell_utils.yml
+
+- name: bash
+  hosts: vm
+
+  tasks:
+  - name: Ensure bash
+    become: true
+    become_user: root
+    apt:
+      name: bash
+      state: latest
+  - name: Copy bashrc
+    ansible.builtin.copy:
+      src: /dotfiles/files/bash/.bashrc
+      dest: ~/.bashrc
+      remote_src: true

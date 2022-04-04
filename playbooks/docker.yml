@@ -1,0 +1,43 @@
+---
+- name: docker
+  hosts: vm
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Ensure containerd installed
+    become: true
+    become_user: root
+    apt:
+      deb: https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/containerd.io_1.5.11-1_amd64.deb
+  - name: Ensure docker-ce-cli installed
+    become: true
+    become_user: root
+    apt:
+      deb: https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/docker-ce-cli_20.10.13~3-0~debian-bullseye_amd64.deb
+  - name: Ensure docker-ce installed
+    become: true
+    become_user: root
+    apt:
+      deb: https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/docker-ce_20.10.13~3-0~debian-bullseye_amd64.deb
+  - name: Ensure docker-compose installed
+    become: true
+    become_user: root
+    apt:
+      deb: https://download.docker.com/linux/debian/dists/bullseye/pool/stable/amd64/docker-compose-plugin_2.3.3~debian-bullseye_amd64.deb
+  - name: Make sure docker is enabled
+    ansible.builtin.systemd:
+      state: started
+      enabled: true
+      name: docker
+  - name: Ensure group "docker" exists with correct gid
+    ansible.builtin.group:
+      name: docker
+      state: present
+      gid: 1750
+  - name: Ensure debian user is in docker group
+    ansible.builtin.user:
+      name: docker
+      group: docker
+
+

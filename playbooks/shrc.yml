@@ -1,0 +1,13 @@
+---
+- name: Ensure dotfiles
+  ansible.builtin.import_playbook: dotfiles.yml
+
+- name: shrc
+  hosts: vm
+
+  tasks:
+  - name: Copy shrc
+    ansible.builtin.copy:
+      src: /dotfiles/files/shrc/shrc.sh
+      dest: ~/.config/shrc
+      remote_src: true

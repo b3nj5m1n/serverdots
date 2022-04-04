@@ -1,0 +1,26 @@
+---
+- name: ufw
+  hosts: vm
+  become: true
+  become_user: root
+
+  tasks:
+  - name: Ensure ufw installed
+    become: true
+    become_user: root
+    apt:
+      name: ufw
+      state: latest
+  - name: Make sure ufw is enabled
+    ansible.builtin.systemd:
+      state: started
+      enabled: true
+      name: ufw
+  - name: Reject everything and enable ufw
+    community.general.ufw:
+      state: enabled
+      policy: reject
+  - name: Allow ssh
+    community.general.ufw:
+      rule: allow
+      name: OpenSSH

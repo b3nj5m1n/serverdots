@@ -1,0 +1,30 @@
+---
+- name: Ensure dotfiles
+  ansible.builtin.import_playbook: dotfiles.yml
+
+- name: Ensure shrc
+  ansible.builtin.import_playbook: shrc.yml
+
+- name: Ensure shell utils
+  ansible.builtin.import_playbook: shell_utils.yml
+
+- name: zsh
+  hosts: vm
+
+  tasks:
+  - name: Ensure zsh
+    become: true
+    become_user: root
+    apt:
+      name: zsh
+      state: latest
+  - name: Copy zshrc
+    ansible.builtin.copy:
+      src: /dotfiles/files/zsh/zshrc
+      dest: ~/.zshrc
+      remote_src: true
+  - name: Copy shrc
+    ansible.builtin.copy:
+      src: /dotfiles/files/shrc/shrc.sh
+      dest: ~/.config/shrc
+      remote_src: true

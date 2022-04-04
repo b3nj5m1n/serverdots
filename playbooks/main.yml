@@ -1,0 +1,31 @@
+---
+- name: System
+  ansible.builtin.import_playbook: sys.yml
+
+- name: Dotfiles
+  ansible.builtin.import_playbook: dotfiles.yml
+
+- name: Serverdots
+  ansible.builtin.import_playbook: serverdots.yml
+
+- name: UFW
+  ansible.builtin.import_playbook: ufw.yml
+
+- name: Shell Utils
+  ansible.builtin.import_playbook: shell_utils.yml
+
+- name: Shrc
+  ansible.builtin.import_playbook: shrc.yml
+
+- name: Bash
+  ansible.builtin.import_playbook: bash.yml
+
+- name: Zsh
+  ansible.builtin.import_playbook: zsh.yml
+
+- name: Neovim
+  ansible.builtin.import_playbook: neovim.yml
+
+- name: Docker
+  ansible.builtin.import_playbook: docker.yml
+

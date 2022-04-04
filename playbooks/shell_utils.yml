@@ -1,0 +1,97 @@
+---
+- name: terminfo
+  hosts: vm
+
+  tasks:
+  - name: Compile terminfo files
+    ansible.builtin.shell:
+      cmd: "/bin/bash ./compile-terminfo.sh"
+      chdir: /dotfiles/files/terminfo
+
+- name: starship
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "starship"
+    bin: "starship"
+    bin_path: "starship"
+    url: "https://github.com/starship/starship/releases/download/v1.5.4/starship-x86_64-unknown-linux-gnu.tar.gz"
+
+- name: zoxide
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "zoxide"
+    bin: "zoxide"
+    bin_path: "zoxide"
+    url: "https://github.com/ajeetdsouza/zoxide/releases/download/v0.8.0/zoxide-v0.8.0-x86_64-unknown-linux-musl.tar.gz"
+
+- name: mcfly
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "mcfly"
+    bin: "mcfly"
+    bin_path: "mcfly"
+    url: "https://github.com/cantino/mcfly/releases/download/v0.6.0/mcfly-v0.6.0-x86_64-unknown-linux-musl.tar.gz"
+
+- name: exa
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "exa"
+    bin: "exa"
+    bin_path: "bin/exa"
+    url: "https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip"
+
+- name: fd
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "fd"
+    bin: "fd"
+    bin_path: "fd-v8.3.2-x86_64-unknown-linux-gnu/fd"
+    url: "https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-unknown-linux-gnu.tar.gz"
+
+- name: skim
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "skim"
+    bin: "sk"
+    bin_path: "sk"
+    url: "https://github.com/lotabout/skim/releases/download/v0.9.4/skim-v0.9.4-x86_64-unknown-linux-musl.tar.gz"
+
+- name: ripgrep
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "ripgrep"
+    bin: "rg"
+    bin_path: "ripgrep-13.0.0-x86_64-unknown-linux-musl/rg"
+    url: "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
+
+- name: procs
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "procs"
+    bin: "procs"
+    bin_path: "procs"
+    url: "https://github.com/dalance/procs/releases/download/v0.12.1/procs-v0.12.1-x86_64-lnx.zip"
+
+- name: dust
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "dust"
+    bin: "dust"
+    bin_path: "dust-v0.8.1-alpha.2-x86_64-unknown-linux-gnu/dust"
+    url: "https://github.com/bootandy/dust/releases/download/v0.8.1-alpha.2/dust-v0.8.1-alpha.2-x86_64-unknown-linux-gnu.tar.gz"
+
+- name: bottom
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "bottom"
+    bin: "btm"
+    bin_path: "btm"
+    url: "https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_x86_64-unknown-linux-gnu.tar.gz"
+
+- name: bat
+  ansible.builtin.import_playbook: install_bin.yml
+  vars:
+    pack_name: "bat"
+    bin: "bat"
+    bin_path: "bat-v0.20.0-x86_64-unknown-linux-gnu/bat"
+    url: "https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-gnu.tar.gz"

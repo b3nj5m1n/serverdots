@@ -1,0 +1,51 @@
+---
+- name: terminfo
+  hosts: vm
+
+  tasks:
+  - name: Install tar
+    become: true
+    become_user: root
+    apt:
+      name: tar
+      state: present
+  - name: Install unzip
+    become: true
+    become_user: root
+    apt:
+      name: unzip
+      state: present
+  - name: "Check if {{ pack_name }} is installed"
+    stat:
+      path: "/usr/bin/{{ bin }}"
+    register: installed
+  - name: "Create {{ pack_name }} dir if it doesn't exist"
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: "/tmp/{{ pack_name }}"
+      state: directory
+      owner: debian
+    when: not installed.stat.exists
+  - name: "Download {{ pack_name }}"
+    ansible.builtin.unarchive:
+      src: "{{ url }}"
+      dest: "/tmp/{{ pack_name }}"
+      remote_src: yes
+    when: not installed.stat.exists
+  - name: "Install {{ pack_name }}"
+    become: true
+    become_user: root
+    ansible.builtin.copy:
+      src: "/tmp/{{ pack_name }}/{{ bin_path }}"
+      dest: "/usr/bin/{{ bin }}"
+      remote_src: yes
+      mode: '701'
+    when: not installed.stat.exists
+  - name: "Remove {{ pack_name }} dir"
+    become: true
+    become_user: root
+    ansible.builtin.file:
+      path: "/tmp/{{ pack_name }}"
+      state: absent
+    when: not installed.stat.exists
