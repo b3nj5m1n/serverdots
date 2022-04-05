@@ -1,31 +1,41 @@
 ---
 - name: System
   ansible.builtin.import_playbook: sys.yml
+  when: hostvars[inventory_hostname]["ran_playbook_sys"] is undefined
 
 - name: Dotfiles
   ansible.builtin.import_playbook: dotfiles.yml
+  when: hostvars[inventory_hostname]["ran_playbook_dotfiles"] is undefined
 
 - name: Serverdots
   ansible.builtin.import_playbook: serverdots.yml
+  when: hostvars[inventory_hostname]["ran_playbook_serverdots"] is undefined
 
 - name: UFW
   ansible.builtin.import_playbook: ufw.yml
+  when: hostvars[inventory_hostname]["ran_playbook_ufw"] is undefined
 
 - name: Shell Utils
   ansible.builtin.import_playbook: shell_utils.yml
+  when: hostvars[inventory_hostname]["ran_playbook_shell_utils"] is undefined
 
 - name: Shrc
   ansible.builtin.import_playbook: shrc.yml
+  when: hostvars[inventory_hostname]["ran_playbook_shrc"] is undefined
 
 - name: Bash
   ansible.builtin.import_playbook: bash.yml
+  when: hostvars[inventory_hostname]["ran_playbook_bash"] is undefined
 
 - name: Zsh
   ansible.builtin.import_playbook: zsh.yml
+  when: hostvars[inventory_hostname]["ran_playbook_zsh"] is undefined
 
 - name: Neovim
   ansible.builtin.import_playbook: neovim.yml
+  when: hostvars[inventory_hostname]["ran_playbook_neovim"] is undefined
 
 - name: Docker
   ansible.builtin.import_playbook: docker.yml
+  when: hostvars[inventory_hostname]["ran_playbook_docker"] is undefined
 

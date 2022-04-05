@@ -1,12 +1,15 @@
 ---
 - name: Ensure dotfiles
   ansible.builtin.import_playbook: dotfiles.yml
+  when: hostvars[inventory_hostname]["ran_playbook_dotfiles"] is undefined
 
 - name: Ensure shrc
   ansible.builtin.import_playbook: shrc.yml
+  when: hostvars[inventory_hostname]["ran_playbook_shrc"] is undefined
 
 - name: Ensure shell utils
   ansible.builtin.import_playbook: shell_utils.yml
+  when: hostvars[inventory_hostname]["ran_playbook_shell_utils"] is undefined
 
 - name: zsh
   hosts: vm
@@ -28,3 +31,6 @@
       src: /dotfiles/files/shrc/shrc.sh
       dest: ~/.config/shrc
       remote_src: true
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_zsh: true

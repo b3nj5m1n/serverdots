@@ -9,12 +9,17 @@
     apt:
       name: tar
       state: present
+    when: hostvars[inventory_hostname]["ran_playbook_install_bin"] is undefined
   - name: Install unzip
     become: true
     become_user: root
     apt:
       name: unzip
       state: present
+    when: hostvars[inventory_hostname]["ran_playbook_install_bin"] is undefined
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_install_bin: true
   - name: "Check if {{ pack_name }} is installed"
     stat:
       path: "/usr/bin/{{ bin }}"

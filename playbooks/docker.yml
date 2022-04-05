@@ -39,5 +39,8 @@
     ansible.builtin.user:
       name: docker
       group: docker
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_docker: true
 
 

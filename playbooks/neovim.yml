@@ -43,9 +43,13 @@
       path: /tmp/nvim
       state: absent
     when: not installed_nvim.stat.exists
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_neovim_install: true
 
 - name: Ensure dotfiles
   ansible.builtin.import_playbook: dotfiles.yml
+  when: hostvars[inventory_hostname]["ran_playbook_dotfiles"] is undefined
 
 - name: neovim config
   hosts: vm
@@ -93,3 +97,14 @@
     ansible.builtin.git:
       repo: 'https://github.com/wbthomason/packer.nvim'
       dest: '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_neovim_config: true
+
+- name: Set done variable
+  hosts: vm
+
+  tasks:
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_neovim: true

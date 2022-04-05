@@ -14,3 +14,6 @@
     ansible.builtin.user:
       name: debian
       group: sudo
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_sys: true

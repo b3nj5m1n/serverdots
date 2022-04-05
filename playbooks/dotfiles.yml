@@ -27,3 +27,6 @@
       repo: 'https://www.github.com/b3nj5m1n/dotfiles.git'
       dest: /dotfiles
       version: 659ba4e99764dd5a3be4b10c993e32bc6cfbee0b
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_dotfiles: true

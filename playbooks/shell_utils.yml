@@ -95,3 +95,11 @@
     bin: "bat"
     bin_path: "bat-v0.20.0-x86_64-unknown-linux-gnu/bat"
     url: "https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-gnu.tar.gz"
+
+- name: Set done variable
+  hosts: vm
+
+  tasks:
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_shell_utils: true

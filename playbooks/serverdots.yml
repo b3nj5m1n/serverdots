@@ -22,3 +22,6 @@
       repo: 'https://www.github.com/b3nj5m1n/serverdots.git'
       dest: /serverdots
       version: 514d21cd42723230a3893b1069b15e2d3d7971cf
+  - name: Set done variable
+    ansible.builtin.set_fact:
+      ran_playbook_serverdots: true
