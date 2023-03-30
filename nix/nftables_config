@@ -1,0 +1,52 @@
+table ip nat {
+	chain nixos-nat-pre {
+		iifname "wg0" counter packets 0 bytes 0 meta mark set 0x1 
+	}
+
+	chain nixos-nat-post {
+		oifname "eth0" mark 0x1 counter packets 0 bytes 0 masquerade 
+	}
+
+	chain nixos-nat-out {
+	}
+
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+		counter packets 13 bytes 4372 jump nixos-nat-pre
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+		counter packets 12 bytes 1102 jump nixos-nat-post
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+		counter packets 12 bytes 1102 jump nixos-nat-out
+	}
+}
+table ip6 nat {
+	chain nixos-nat-pre {
+	}
+
+	chain nixos-nat-post {
+	}
+
+	chain nixos-nat-out {
+	}
+
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+		counter packets 0 bytes 0 jump nixos-nat-pre
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+		counter packets 0 bytes 0 jump nixos-nat-post
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+		counter packets 0 bytes 0 jump nixos-nat-out
+	}
+}
